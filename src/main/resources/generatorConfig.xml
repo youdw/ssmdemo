@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--导入属性配置 -->
+    <properties resource="application.properties"></properties>
+    <!--数据库驱动jar -->
+    <classPathEntry location="/Users/east/.m2/repository/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar" />
+    <context id="default" targetRuntime="MyBatis3">
+        <!--旨在创建class时，对注释进行控制  -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!--数据库连接 -->
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+        <!--
+       默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+           true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+       -->
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--生成实体类 指定包名 以及生成的地址 （可以自定义地址，但是路径不存在不会自动创建  使用Maven生成在target目录下，会自动创建） -->
+        <javaModelGenerator targetPackage="cc.youdw.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+            <!-- 给Model添加一个父类 -->
+            <!--<property name="rootClass" value="com.godatrip.fund.entity.BaseEntity"/>-->
+        </javaModelGenerator>
+        <!--生成SQLMAP文件 -->
+        <sqlMapGenerator targetPackage="mybatis"  targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!--生成Dao文件 可以配置 type="XMLMAPPER"生成xml的dao实现  context id="DB2Tables" 修改targetRuntime="MyBatis3"  -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cc.youdw.dao"  targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <!--添加父类接口 -->
+            <!--<property name="rootInterface" value="cc.youdw.fund.dao.GenericDao"/>-->
+        </javaClientGenerator>
+
+        <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
+        <!--<table  tableName="T_COUPON_CODE" domainObjectName="CouponCode" enableSelectByExample="false"-->
+                <!--enableDeleteByExample="false" enableCountByExample="false"-->
+                <!--enableUpdateByExample="false" selectByExampleQueryId="false">-->
+            <!--<generatedKey column="CC_ID"  sqlStatement="SELECT LAST_INSERT_ID()" />-->
+            <!--<columnRenamingRule  searchString="CC_ID" replaceString="id"/>-->
+        <!--</table>-->
+        <table tableName="T_USER" domainObjectName="User" enableSelectByExample="false"
+                enableDeleteByExample="false" enableCountByExample="false"
+                enableUpdateByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="USER_ID"  sqlStatement="SELECT LAST_INSERT_ID()" />
+            <columnRenamingRule  searchString="USER_ID" replaceString="id"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

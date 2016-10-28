@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [28/Oct/2016:10:57:19 +0800] "GET /ssmdemo HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [28/Oct/2016:10:57:19 +0800] "GET /ssmdemo/ HTTP/1.1" 200 1556 http-bio-8080-exec-3 29
+0:0:0:0:0:0:0:1 - - [28/Oct/2016:10:57:19 +0800] "GET /ssmdemo/css/main.css HTTP/1.1" 200 85 http-bio-8080-exec-2 3
+0:0:0:0:0:0:0:1 - - [28/Oct/2016:10:57:19 +0800] "GET /ssmdemo/js/bootstrap.min.js HTTP/1.1" 200 34653 http-bio-8080-exec-5 2
+0:0:0:0:0:0:0:1 - - [28/Oct/2016:10:57:19 +0800] "GET /ssmdemo/css/bootstrap.min.css HTTP/1.1" 200 114011 http-bio-8080-exec-6 3
+0:0:0:0:0:0:0:1 - - [28/Oct/2016:10:57:19 +0800] "GET /ssmdemo/js/jquery-3.1.0.js HTTP/1.1" 200 263767 http-bio-8080-exec-4 5
+0:0:0:0:0:0:0:1 - - [28/Oct/2016:10:57:19 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-10 0
