@@ -28,12 +28,9 @@
     "material-design-iconic-font": "^2.2.0",
     "object-assign": "^4.1.0",
     "pubsub-js": "^1.5.3",
-    "qrcode.react": "^0.6.1",
-    "rctui": "0.6.1",
     "react-addons-css-transition-group": "^15.2.1",
     "refetch": "^0.2.0",
     "style-loader": "^0.13.1",
-    "tigerfacejs-network": "0.0.42",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
