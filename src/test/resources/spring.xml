@@ -22,8 +22,7 @@
     <context:annotation-config/>
 
     <!-- 自动加载bean扫描路径 -->
-    <context:component-scan base-package="cc.youdw.dao"/>
-    <context:component-scan base-package="cc.youdw.service"/>
+    <context:component-scan base-package="cc.youdw.*"/>
 
     <!-- 事务 -->
     <bean id="transactionManager"
@@ -84,7 +83,7 @@
 
     <!-- mapper接口所在包名，Spring会自动查找其下的mapper -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.oldlyu.dao"/>
+        <property name="basePackage" value="cc.youdw.dao"/>
     </bean>
 
 </beans>
