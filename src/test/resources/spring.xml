@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd"
+       default-lazy-init="false">
+
+    <description>Spring公共配置</description>
+
+    <context:annotation-config/>
+
+    <!-- 自动加载bean扫描路径 -->
+    <context:component-scan base-package="cc.youdw.dao"/>
+    <context:component-scan base-package="cc.youdw.service"/>
+
+    <!-- 事务 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="nestedTransactionAllowed" value="true"/>
+    </bean>
+
+    <context:property-placeholder ignore-unresolvable="true" location="classpath*:/application.properties"/>
+
+    <!-- 数据源：使用 BoneCP -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <!-- 指定连接数据库的驱动 -->
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="3"/>
+        <property name="minIdle" value="3"/>
+        <property name="maxActive" value="20"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:mybatis/*Mapper.xml"></property>
+    </bean>
+
+    <aop:aspectj-autoproxy/>
+
+    <aop:config>
+        <aop:pointcut id="serviceMethods"
+                      expression="execution(* cc.youdw.service..*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+    </aop:config>
+
+    <!-- 使用annotation定义事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager"
+                          proxy-target-class="true"/>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*"/>
+            <tx:method name="insert*"/>
+            <tx:method name="create*"/>
+            <tx:method name="update*"/>
+            <tx:method name="save*"/>
+            <tx:method name="delete*"/>
+            <tx:method name="remove*"/>
+            <tx:method name="do*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- mapper接口所在包名，Spring会自动查找其下的mapper -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.oldlyu.dao"/>
+    </bean>
+
+</beans>
