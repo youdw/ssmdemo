@@ -38,10 +38,9 @@
     </div>
 
 </div>
-<script src="js/sockjs.min.js"></script>
 <script>
-    var url = 'marco';
-    var sock = new SockJS(url);
+    var url = 'ws://' +window.location.host + '/ssmdemo/polo';
+    var sock = new WebSocket(url);
     sock.onopen = function () {
         console.log("opening");
         senMessage();
@@ -59,12 +58,11 @@
     };
     
     function senMessage() {
-        sock.send("Marco! 你好 我是polo");
+        sock.send("Polo1231!");
     }
 
 
 </script>
-
 <script src="js/jquery-3.1.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>

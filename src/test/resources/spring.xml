@@ -33,7 +33,7 @@
 
     <context:property-placeholder ignore-unresolvable="true" location="classpath*:/application.properties"/>
 
-    <!-- 数据源：使用 BoneCP -->
+    <!-- 数据源：使用 druid -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
         <!-- 指定连接数据库的驱动 -->
