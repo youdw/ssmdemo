@@ -6,7 +6,7 @@
     <!--导入属性配置 -->
     <properties resource="application.properties"></properties>
     <!--数据库驱动jar -->
-    <classPathEntry location="/Users/east/.m2/repository/mysql/mysql-connector-java/5.1.32/mysql-connector-java-5.1.32.jar" />
+    <classPathEntry location="/Users/youdw/.m2/repository/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar" />
     <context id="default" targetRuntime="MyBatis3">
         <!--旨在创建class时，对注释进行控制  -->
         <commentGenerator>
@@ -51,12 +51,25 @@
             <!--<generatedKey column="CC_ID"  sqlStatement="SELECT LAST_INSERT_ID()" />-->
             <!--<columnRenamingRule  searchString="CC_ID" replaceString="id"/>-->
         <!--</table>-->
-        <table tableName="T_USER" domainObjectName="User" enableSelectByExample="false"
+       <!-- <table tableName="T_USER" domainObjectName="User" enableSelectByExample="false"
                 enableDeleteByExample="false" enableCountByExample="false"
                 enableUpdateByExample="false" selectByExampleQueryId="false">
             <generatedKey column="USER_ID"  sqlStatement="SELECT LAST_INSERT_ID()" />
             <columnRenamingRule  searchString="USER_ID" replaceString="id"/>
-        </table>
+        </table>-->
 
+
+        <table tableName="t_comment" domainObjectName="Comment" enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               enableUpdateByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="ID" sqlStatement="SELECT LAST_INSERT_ID()"/>
+            <columnRenamingRule searchString="ID" replaceString="id"/>
+        </table>
+        <table tableName="t_reply" domainObjectName="Reply" enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               enableUpdateByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="ID" sqlStatement="SELECT LAST_INSERT_ID()"/>
+            <columnRenamingRule searchString="ID" replaceString="id"/>
+        </table>
     </context>
 </generatorConfiguration>

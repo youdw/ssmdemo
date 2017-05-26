@@ -38,33 +38,6 @@
     </div>
 
 </div>
-<script src="js/sockjs.min.js"></script>
-<script>
-    var url = 'marco';
-    var sock = new SockJS(url);
-    sock.onopen = function () {
-        console.log("opening");
-        senMessage();
-    };
-
-    sock.onmessage = function (e) {
-        console.log("收到消息："+e.data);
-        setTimeout(function () {
-            senMessage();
-        },2000);
-    };
-
-    sock.onclose = function (e) {
-        console.log("closing");
-    };
-    
-    function senMessage() {
-        sock.send("Marco! 你好 我是polo");
-    }
-
-
-</script>
-
 <script src="js/jquery-3.1.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
