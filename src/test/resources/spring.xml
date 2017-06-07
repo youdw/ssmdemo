@@ -22,7 +22,8 @@
     <context:annotation-config/>
 
     <!-- 自动加载bean扫描路径 -->
-    <context:component-scan base-package="cc.youdw.*"/>
+    <context:component-scan base-package="cc.youdw.service"/>
+    <context:component-scan base-package="cc.youdw.dao"/>
 
     <!-- 事务 -->
     <bean id="transactionManager"

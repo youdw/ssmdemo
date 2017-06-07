@@ -13,7 +13,7 @@
     <appender name="rollingFile"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>/logs/ssmdemo_log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${catalina.base}/logs/ssmdemo_log.%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>7</MaxHistory>
         </rollingPolicy>
         <encoder>
@@ -24,5 +24,6 @@
 
     <root level="debug">
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="rollingFile" />
     </root>
 </configuration>
