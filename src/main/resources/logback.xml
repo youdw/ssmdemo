@@ -22,7 +22,6 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework.web"/>
     <root level="debug">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="rollingFile" />

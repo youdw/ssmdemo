@@ -23,7 +23,6 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-//    @Cacheable("usersCache")//缓存这个方法的结果
     public List<User> getUsers(){
         logger.info("=======");
         return userDao.getByConditions(null);

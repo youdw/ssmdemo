@@ -78,6 +78,8 @@
         <aop:pointcut id="serviceMethods"
                       expression="execution(* cc.youdw.service..*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+        <!-- 缓存-->
+        <!--<aop:advisor advice-ref="cacheAdvice"  pointcut="execution(* cc.youdw.service.UserService.*(..))"/>-->
     </aop:config>
 
     <!-- 事务 -->
@@ -107,7 +109,18 @@
 
     <!-- 启用注解缓存 -->
     <cache:annotation-driven/>
+    <!--<cache:advice id="cacheAdvice" cache-manager="cacheManager">
+        <cache:caching>
+            <cache:cacheable cache="usersCache" method="getUsers"/>
+        </cache:caching>
+    </cache:advice>-->
+
+
     <!-- 声明缓存管理器 -->
     <bean id="cacheManager" class="org.springframework.cache.concurrent.ConcurrentMapCacheManager"/>
+
+
+
+
 
 </beans>
