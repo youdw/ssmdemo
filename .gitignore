@@ -1,5 +1,4 @@
 /.idea
-/src/main/resources/generatorConfig.xml
 /target/
 /logs/
 /*.iml

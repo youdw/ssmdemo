@@ -1,7 +1,6 @@
 package cc.youdw.service;
 
 import cc.youdw.common.BaseTest;
-import net.coobird.thumbnailator.Thumbnails;
 import org.junit.Test;
 
 import java.io.File;
@@ -15,10 +14,10 @@ public class ImageTest extends BaseTest {
 
     @Test
     public void resize() throws IOException {
-        File imageFile = new File("/Users/east/Desktop/giftest.gif");
+        /*File imageFile = new File("/Users/east/Desktop/giftest.gif");
         File toFile = new File("/Users/east/Desktop/giftest2.gif");
         Thumbnails.of(imageFile).size(100,100)
-                .toFile(toFile);
+                .toFile(toFile);*/
     }
 
 }

@@ -1,7 +1,6 @@
 package cc.youdw.dao;
 
 import cc.youdw.common.BaseTest;
-import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,7 +11,7 @@ import java.util.List;
  */
 public class CommentDaoTset extends BaseTest{
 
-    @Autowired
+    /*@Autowired
     private CommentDao commentDao;
 
     @Test
@@ -20,5 +19,5 @@ public class CommentDaoTset extends BaseTest{
         List<Comment> comments = commentDao.queryList("fa941a56263811e7979f00163e1038f9");
         String jsonObject = JSON.toJSONString(comments);
         System.out.println(jsonObject+">>>");
-    }
+    }*/
 }

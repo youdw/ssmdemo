@@ -45,12 +45,6 @@
         </javaClientGenerator>
 
         <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
-        <!--<table  tableName="T_COUPON_CODE" domainObjectName="CouponCode" enableSelectByExample="false"-->
-                <!--enableDeleteByExample="false" enableCountByExample="false"-->
-                <!--enableUpdateByExample="false" selectByExampleQueryId="false">-->
-            <!--<generatedKey column="CC_ID"  sqlStatement="SELECT LAST_INSERT_ID()" />-->
-            <!--<columnRenamingRule  searchString="CC_ID" replaceString="id"/>-->
-        <!--</table>-->
        <!-- <table tableName="T_USER" domainObjectName="User" enableSelectByExample="false"
                 enableDeleteByExample="false" enableCountByExample="false"
                 enableUpdateByExample="false" selectByExampleQueryId="false">
@@ -58,18 +52,5 @@
             <columnRenamingRule  searchString="USER_ID" replaceString="id"/>
         </table>-->
 
-
-        <table tableName="t_comment" domainObjectName="Comment" enableSelectByExample="false"
-               enableDeleteByExample="false" enableCountByExample="false"
-               enableUpdateByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="ID" sqlStatement="SELECT LAST_INSERT_ID()"/>
-            <columnRenamingRule searchString="ID" replaceString="id"/>
-        </table>
-        <table tableName="t_reply" domainObjectName="Reply" enableSelectByExample="false"
-               enableDeleteByExample="false" enableCountByExample="false"
-               enableUpdateByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="ID" sqlStatement="SELECT LAST_INSERT_ID()"/>
-            <columnRenamingRule searchString="ID" replaceString="id"/>
-        </table>
     </context>
 </generatorConfiguration>
