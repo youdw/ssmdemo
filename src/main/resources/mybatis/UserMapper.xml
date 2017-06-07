@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cc.youdw.dao.UserDao" >
   <resultMap id="BaseResultMap" type="cc.youdw.entity.User" >
-    <id column="USER_ID" property="id" jdbcType="INTEGER" />
-    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
-    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <id column="user_id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    USER_ID, USERNAME, PASSWORD
+    user_id, username, password
   </sql>
 
   <!-- 根据条件查询 -->
@@ -21,17 +21,17 @@
     select 
     <include refid="Base_Column_List" />
     from t_user
-    where USER_ID = #{id,jdbcType=INTEGER}
+    where user_id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_user
-    where USER_ID = #{id,jdbcType=INTEGER}
+    where user_id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cc.youdw.entity.User" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_user (USER_ID, USERNAME, PASSWORD
+    insert into t_user (user_id, username, password
       )
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
       )
@@ -42,12 +42,12 @@
     </selectKey>
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      USER_ID,
+      user_id,
       <if test="username != null" >
-        USERNAME,
+        username,
       </if>
       <if test="password != null" >
-        PASSWORD,
+        password,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -64,18 +64,18 @@
     update t_user
     <set >
       <if test="username != null" >
-        USERNAME = #{username,jdbcType=VARCHAR},
+        username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
-        PASSWORD = #{password,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
       </if>
     </set>
-    where USER_ID = #{id,jdbcType=INTEGER}
+    where user_id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cc.youdw.entity.User" >
     update t_user
-    set USERNAME = #{username,jdbcType=VARCHAR},
-      PASSWORD = #{password,jdbcType=VARCHAR}
-    where USER_ID = #{id,jdbcType=INTEGER}
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where user_id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
