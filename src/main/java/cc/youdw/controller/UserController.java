@@ -18,21 +18,40 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 获取用户列表
+     * @return
+     */
     @RequestMapping(value = "getUsers",method = RequestMethod.GET)
     public Object getUser(){
         return userService.getUsers();
     }
 
+    /**
+     * 查询单个用户
+     * @param userId
+     * @return
+     */
     @RequestMapping("/{userId}")
     public User findOneUser(@PathVariable Integer userId){
         return userService.findOne(userId);
     }
 
+    /**
+     * 添加单个用户
+     * @param user
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     public User save(User user){
         return userService.save(user);
     }
 
+    /**
+     * 删除单个用户
+     * @param userId
+     * @return
+     */
     @RequestMapping(method = RequestMethod.DELETE)
     public Object deleteOne(@RequestParam Integer userId){
         return userService.deleteOne(userId);
